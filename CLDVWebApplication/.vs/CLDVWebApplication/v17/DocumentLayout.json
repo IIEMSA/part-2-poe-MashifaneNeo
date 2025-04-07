@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1247CB2C-1E08-41D4-BFD8-8226FAB9AF5C}|CLDVWebApplication.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-mashifaneneo\\cldvwebapplication\\models\\eventeasedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1247CB2C-1E08-41D4-BFD8-8226FAB9AF5C}|CLDVWebApplication.csproj|solutionrelative:models\\eventeasedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1247CB2C-1E08-41D4-BFD8-8226FAB9AF5C}|CLDVWebApplication.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-mashifaneneo\\cldvwebapplication\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1247CB2C-1E08-41D4-BFD8-8226FAB9AF5C}|CLDVWebApplication.csproj|solutionrelative:models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1247CB2C-1E08-41D4-BFD8-8226FAB9AF5C}|CLDVWebApplication.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-mashifaneneo\\cldvwebapplication\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1247CB2C-1E08-41D4-BFD8-8226FAB9AF5C}|CLDVWebApplication.csproj|solutionrelative:controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1247CB2C-1E08-41D4-BFD8-8226FAB9AF5C}|CLDVWebApplication.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-mashifaneneo\\cldvwebapplication\\views\\booking\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1247CB2C-1E08-41D4-BFD8-8226FAB9AF5C}|CLDVWebApplication.csproj|solutionrelative:views\\booking\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1247CB2C-1E08-41D4-BFD8-8226FAB9AF5C}|CLDVWebApplication.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-mashifaneneo\\cldvwebapplication\\views\\booking\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1247CB2C-1E08-41D4-BFD8-8226FAB9AF5C}|CLDVWebApplication.csproj|solutionrelative:views\\booking\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EventEaseDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\Models\\EventEaseDbContext.cs",
+              "RelativeDocumentMoniker": "Models\\EventEaseDbContext.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\Models\\EventEaseDbContext.cs",
+              "RelativeToolTip": "Models\\EventEaseDbContext.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAQwFUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T15:43:59.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\Views\\Booking\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Booking\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\Views\\Booking\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Booking\\Edit.cshtml",
+              "ViewState": "AgIAAAUAAABgmpmZmZkewB0AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T15:43:45.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\Views\\Booking\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Booking\\Create.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\Views\\Booking\\Create.cshtml",
+              "RelativeToolTip": "Views\\Booking\\Create.cshtml",
+              "ViewState": "AgIAAAQAAADAzMzMzMwHwBgAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T15:43:40.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\Models\\Booking.cs",
+              "RelativeDocumentMoniker": "Models\\Booking.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\Models\\Booking.cs",
+              "RelativeToolTip": "Models\\Booking.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAIwBIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T15:43:35.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookingController.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "Controllers\\BookingController.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAqwIwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T15:43:30.646Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

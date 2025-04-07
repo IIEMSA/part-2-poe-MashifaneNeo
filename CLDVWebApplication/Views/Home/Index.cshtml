@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to EventEase!</h1>
+    <p>Manage your Venues, Events, and Bookings with ease.</p>
+    <div class="mt-4">
+        <a class="btn btn-primary m-2" asp-controller="Venue" asp-action="Index">Go to Venues</a>
+        <a class="btn btn-success m-2" asp-controller="Event" asp-action="Index">Go to Events</a>
+        <a class="btn btn-info m-2" asp-controller="Booking" asp-action="Index">Go to Bookings</a>
+    </div>
+</div>
