@@ -34,8 +34,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -44,7 +48,7 @@
               "RelativeDocumentMoniker": "Controllers\\VenueController.cs",
               "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ST10449143_CLDV_Part1\\CLDVWebApplication\\Controllers\\VenueController.cs",
               "RelativeToolTip": "Controllers\\VenueController.cs",
-              "ViewState": "AgIAAC4AAABAmpmZmdkkwCUAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAkwN4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T16:28:24.548Z",
               "EditorCaption": ""
@@ -59,7 +63,8 @@
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T11:00:11.798Z"
+              "WhenOpened": "2025-05-12T11:00:11.798Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -71,7 +76,8 @@
               "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T10:59:31.134Z"
+              "WhenOpened": "2025-05-12T10:59:31.134Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -83,7 +89,8 @@
               "RelativeToolTip": "Views\\Booking\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T10:24:19.777Z"
+              "WhenOpened": "2025-05-12T10:24:19.777Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -95,7 +102,8 @@
               "RelativeToolTip": "Views\\Booking\\Index.cshtml",
               "ViewState": "AgIAADYAAADA//////8ewEwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T09:46:53.672Z"
+              "WhenOpened": "2025-05-12T09:46:53.672Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -107,7 +115,8 @@
               "RelativeToolTip": "Controllers\\BookingController.cs",
               "ViewState": "AgIAAEoAAAAAAgAAAAABwEEAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T09:40:46.167Z"
+              "WhenOpened": "2025-05-12T09:40:46.167Z",
+              "EditorCaption": ""
             }
           ]
         }
