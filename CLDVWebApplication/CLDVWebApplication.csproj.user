@@ -2,6 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugProfile>https</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>C:\Users\lab_services_student\Desktop\CLDVPOEPart1\CLDVWebApplication\Properties\PublishProfiles\ST10449143AzureWebAppServices - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\lab_services_student\Desktop\ST10449143_CLDV_Part1\CLDVWebApplication\Properties\PublishProfiles\ST10449143AzureWebAppServices - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

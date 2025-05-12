@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\CLDVWebApplication.csproj": {}
+    "C:\\Users\\lab_services_student\\Desktop\\ST10449143_CLDV_Part1\\CLDVWebApplication\\CLDVWebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\CLDVWebApplication.csproj": {
+    "C:\\Users\\lab_services_student\\Desktop\\ST10449143_CLDV_Part1\\CLDVWebApplication\\CLDVWebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\CLDVWebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\ST10449143_CLDV_Part1\\CLDVWebApplication\\CLDVWebApplication.csproj",
         "projectName": "CLDVWebApplication",
-        "projectPath": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\CLDVWebApplication.csproj",
+        "projectPath": "C:\\Users\\lab_services_student\\Desktop\\ST10449143_CLDV_Part1\\CLDVWebApplication\\CLDVWebApplication.csproj",
         "packagesPath": "C:\\Users\\lab_services_student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-MashifaneNeo\\CLDVWebApplication\\obj\\",
+        "outputPath": "C:\\Users\\lab_services_student\\Desktop\\ST10449143_CLDV_Part1\\CLDVWebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.24.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

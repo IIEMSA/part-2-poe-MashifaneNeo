@@ -15,8 +15,10 @@ public class EventTable
     [Required]
     public DateTime EventDate { get; set; }
 
+    [Required]
     public string? Description { get; set; }
 
+    [Required]
     public int VenueId { get; set; }
 
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();

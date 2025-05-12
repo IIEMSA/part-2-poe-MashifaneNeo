@@ -28,7 +28,7 @@ CREATE TABLE Booking (
     BookingDate DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (EventId) REFERENCES [EventTable](EventId) ON DELETE CASCADE,
     FOREIGN KEY (VenueId) REFERENCES Venue(VenueId),
-    CONSTRAINT unique_booking UNIQUE (VenueId, EventId)
+    CONSTRAINT unique_booking UNIQUE (VenueId, EventId, BookingDate)
 );
 
 -- Data Insertion

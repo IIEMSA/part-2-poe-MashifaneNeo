@@ -38,6 +38,7 @@ namespace CLDVWebApplication.Controllers
                 {
                     _context.EventTables.Add(eventTable);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = $"Event '{eventTable.EventName}' created successfully!";
                     return RedirectToAction(nameof(Index));  // Redirect back to event list
                 }
                 catch (Exception ex)
@@ -71,12 +72,32 @@ namespace CLDVWebApplication.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Update(eventTable);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Update(eventTable);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = $"Event '{eventTable.EventName}' edited successfully!";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!EventTableExists(eventTable.EventId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
             }
             ViewData["VenueId"] = new SelectList(_context.Venues, "VenueId", "VenueName", eventTable.VenueId);
             return View(eventTable);
+        }
+
+        private bool EventTableExists(int id)
+        {
+            return _context.EventTables.Any(e => e.EventId == id);
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -103,9 +124,31 @@ namespace CLDVWebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            // Check if there are any bookings for this event
+            var hasBookings = await _context.Bookings
+        .AnyAsync(b => b.EventId == id);
+
+            if (hasBookings)
+            {
+                TempData["ErrorMessage"] = "Cannot delete this event because it has active bookings.";
+                return RedirectToAction(nameof(Index));
+            }
+
             var eventTable = await _context.EventTables.FindAsync(id);
-            _context.EventTables.Remove(eventTable);
-            await _context.SaveChangesAsync();
+            if (eventTable != null)
+            {
+                try
+                {
+                    _context.EventTables.Remove(eventTable);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Event deleted successfully!";
+                }
+                catch (DbUpdateException ex)
+                {
+                    TempData["ErrorMessage"] = "An error occurred while deleting the event. Please try again.";
+                    // Log the exception (ex)
+                }
+            }
             return RedirectToAction(nameof(Index));
         }
     }

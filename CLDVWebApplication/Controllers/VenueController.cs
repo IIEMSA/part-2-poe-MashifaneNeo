@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CLDVWebApplication.Models;
+using Microsoft.AspNetCore.Http;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using System.IO;
 
 namespace CLDVWebApplication.Controllers
 {
@@ -28,18 +32,12 @@ namespace CLDVWebApplication.Controllers
         // GET: Venue/Details
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var venue = await _context.Venues
                 .FirstOrDefaultAsync(m => m.VenueId == id);
-            if (venue == null)
-            {
-                return NotFound();
-            }
 
+            if (venue == null) return NotFound();
             return View(venue);
         }
 
@@ -52,12 +50,27 @@ namespace CLDVWebApplication.Controllers
         // POST: Venue/Create       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VenueId,VenueName,Location,Capacity,ImageUrl")] Venue venue)
+        public async Task<IActionResult> Create(Venue venue, IFormFile ImageFile)
         {
             if (ModelState.IsValid)
             {
+                if (ImageFile != null && ImageFile.Length > 0)
+                {
+                    try
+                    {
+                        var blobUrl = await UploadImageToBlobAsync(ImageFile);
+                        venue.ImageUrl = blobUrl;
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("ImageFile", $"Error uploading image: {ex.Message}");
+                        return View(venue);
+                    }
+                }
+
                 _context.Add(venue);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = $"Venue '{venue.VenueName}' created successfully!";
                 return RedirectToAction(nameof(Index));
             }
             return View(venue);
@@ -66,67 +79,77 @@ namespace CLDVWebApplication.Controllers
         // GET: Venue/Edit
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var venue = await _context.Venues.FindAsync(id);
-            if (venue == null)
-            {
-                return NotFound();
-            }
+            if (venue == null) return NotFound();
+
             return View(venue);
         }
 
         // POST: Venue/Edit/5        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("VenueId,VenueName,Location,Capacity,ImageUrl")] Venue venue)
+        public async Task<IActionResult> Edit(int id, Venue venue, IFormFile ImageFile)
         {
-            if (id != venue.VenueId)
+            if (id != venue.VenueId) return NotFound();
+
+            var existingVenue = await _context.Venues.FindAsync(id);
+            if (existingVenue == null) return NotFound();
+
+            // Update only if new values are provided
+            if (!string.IsNullOrWhiteSpace(venue.VenueName))
             {
-                return NotFound();
+                existingVenue.VenueName = venue.VenueName;
             }
 
-            if (ModelState.IsValid)
+            if (!string.IsNullOrWhiteSpace(venue.Location))
+            {
+                existingVenue.Location = venue.Location;
+            }
+
+            if (venue.Capacity > 0) // Only update if valid capacity is provided
+            {
+                existingVenue.Capacity = venue.Capacity;
+            }
+
+            if (ImageFile != null && ImageFile.Length > 0)
             {
                 try
                 {
-                    _context.Update(venue);
-                    await _context.SaveChangesAsync();
+                    var blobUrl = await UploadImageToBlobAsync(ImageFile);
+                    existingVenue.ImageUrl = blobUrl;
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ex)
                 {
-                    if (!VenueExists(venue.VenueId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ModelState.AddModelError("ImageFile", $"Error uploading image: {ex.Message}");
+                    return View(venue);
                 }
+            }
+
+            try
+            {
+                _context.Update(existingVenue);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = $"Venue '{existingVenue.VenueName}' updated successfully!";
                 return RedirectToAction(nameof(Index));
             }
-            return View(venue);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!VenueExists(venue.VenueId)) return NotFound();
+                else throw;
+            }
         }
 
         // GET: Venue/Delete
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var venue = await _context.Venues
                 .FirstOrDefaultAsync(m => m.VenueId == id);
-            if (venue == null)
-            {
-                return NotFound();
-            }
 
+            if (venue == null) return NotFound();
             return View(venue);
         }
 
@@ -135,14 +158,61 @@ namespace CLDVWebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var hasBookings = await _context.Bookings
+                .AnyAsync(b => b.VenueId == id);
+
+            if (hasBookings)
+            {
+                TempData["ErrorMessage"] = "Cannot delete this venue because it has active bookings.";
+                return RedirectToAction(nameof(Index));
+            }
+
             var venue = await _context.Venues.FindAsync(id);
             if (venue != null)
             {
-                _context.Venues.Remove(venue);
+                try
+                {
+                    _context.Venues.Remove(venue);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Venue deleted successfully!";
+                }
+                catch (DbUpdateException ex)
+                {
+                    TempData["ErrorMessage"] = "An error occurred while deleting the venue. Please try again.";
+                    // Log the exception (ex)
+                }
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        private async Task<string> UploadImageToBlobAsync(IFormFile imageFile)
+        {
+            var connectionString = "DefaultEndpointsProtocol=https;AccountName=websiteaccountn;AccountKey=Vhxs45b715jmpf8/C7ryD/WcA+bj+YCOCYnrRjqNxMKtIYx2tDRCkukLFJrRFqEL7i9ekeheIRL1+AStHdI1pA==;EndpointSuffix=core.windows.net";
+            var containerName = "cldv6211storage";
+
+            var blobServiceClient = new BlobServiceClient(connectionString);
+            var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+
+            // Create container if it doesn't exist
+            await containerClient.CreateIfNotExistsAsync();
+            await containerClient.SetAccessPolicyAsync(PublicAccessType.Blob);
+
+            var blobName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
+            var blobClient = containerClient.GetBlobClient(blobName);
+
+            var blobHttpHeaders = new BlobHttpHeaders
+            {
+                ContentType = imageFile.ContentType
+            };
+
+            using (var stream = imageFile.OpenReadStream())
+            {
+                await blobClient.UploadAsync(stream, new BlobUploadOptions
+                {
+                    HttpHeaders = blobHttpHeaders
+                });
+            }
+            return blobClient.Uri.ToString();
         }
 
         private bool VenueExists(int id)

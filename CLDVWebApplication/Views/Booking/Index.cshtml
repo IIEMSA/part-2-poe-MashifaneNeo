@@ -1,7 +1,29 @@
 @model IEnumerable<CLDVWebApplication.Models.Booking>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Bookings";
+}
+
+<form asp-action="Index" method="get">
+    <div class="form-group">
+		<input type="text" name="searchString" class="form-control" 
+        placeholder="Search bookings..." value="@ViewData["CurrentFilter"]" />
+    </div>
+	<button type="submit" class="btn btn-primary mt-2">Search</button>
+</form>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
 }
 
 <h1>Bookings</h1>
@@ -9,39 +31,47 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BookingDate)
+                Booking ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Event)
+                BookingDate
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Venue)
+                Event
+            </th>
+            <th>
+                Venue
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingDate)
-            </td>
+        @foreach (var booking in Model)
+        {
+            <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Event.EventName)
+                    @booking.BookingId
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Venue.VenueName)
+                    @booking.BookingDate
                 </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    @booking.Event.EventName
+                </td>
+                <td>
+                    @booking.Venue.VenueName
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@booking.BookingId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@booking.BookingId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@booking.BookingId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

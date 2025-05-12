@@ -18,8 +18,8 @@ namespace CLDVWebApplication.Models
         [Required]
         public DateTime BookingDate { get; set; }  // Make this required, or set it as nullable with validation
 
-        public virtual EventTable Event { get; set; } = null!;
+        public virtual EventTable? Event { get; set; } = null!;
 
-        public virtual Venue Venue { get; set; } = null!;
+        public virtual Venue? Venue { get; set; } = null!;
     }
 }
