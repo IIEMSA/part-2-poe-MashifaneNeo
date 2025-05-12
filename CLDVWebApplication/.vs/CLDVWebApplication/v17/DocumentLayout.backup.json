@@ -59,8 +59,7 @@
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T11:00:11.798Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T11:00:11.798Z"
             },
             {
               "$type": "Document",
@@ -108,8 +107,7 @@
               "RelativeToolTip": "Controllers\\BookingController.cs",
               "ViewState": "AgIAAEoAAAAAAgAAAAABwEEAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T09:40:46.167Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T09:40:46.167Z"
             }
           ]
         }
