@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "Controllers\\VenueController.cs",
               "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ST10449143_CLDV_Part1\\CLDVWebApplication\\Controllers\\VenueController.cs",
               "RelativeToolTip": "Controllers\\VenueController.cs",
-              "ViewState": "AgIAAC4AAABAmpmZmdkkwCUAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAALgAAAAAPDMzMzMRwL0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T16:28:24.548Z",
               "EditorCaption": ""
@@ -105,9 +105,10 @@
               "RelativeDocumentMoniker": "Controllers\\BookingController.cs",
               "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ST10449143_CLDV_Part1\\CLDVWebApplication\\Controllers\\BookingController.cs",
               "RelativeToolTip": "Controllers\\BookingController.cs",
-              "ViewState": "AgIAAEoAAAAAAgAAAAABwEEAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAMAvwHAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T09:40:46.167Z"
+              "WhenOpened": "2025-05-12T09:40:46.167Z",
+              "EditorCaption": ""
             }
           ]
         }
