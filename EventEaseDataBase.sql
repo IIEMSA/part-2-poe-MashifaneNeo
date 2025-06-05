@@ -19,6 +19,11 @@ CREATE TABLE [EventTable] (
     VenueId INT NOT NULL,
     FOREIGN KEY (VenueId) REFERENCES Venue(VenueId) ON DELETE CASCADE
 );
+-- Part 3
+CREATE TABLE EventType (
+	EventTypeID INT IDENTITY(1,1) PRIMARY KEY,
+	Name NVARCHAR(100) NOT NULL
+);
 
 -- Booking Table (Junction Table)
 CREATE TABLE Booking (

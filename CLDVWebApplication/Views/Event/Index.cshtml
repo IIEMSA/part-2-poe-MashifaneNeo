@@ -20,6 +20,46 @@
 
 <h1>Events</h1>
 
+<!-- Filter Form -->
+<form method="get" class="mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <label>Event Type</label>
+            <select name="searchType" class="form-control">
+                <option value="">-- All Types --</option>
+                @foreach (var type in (List<CLDVWebApplication.Models.EventType>)ViewData["EventTypes"])
+                {
+                    <option value="@type.Name" selected="@(Context.Request.Query["searchType"] == type.Name)">@type.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Venue</label>
+            <select name="venueId" class="form-control">
+                <option value="">-- All Venues --</option>
+                @foreach (var venue in (List<CLDVWebApplication.Models.Venue>)ViewData["Venues"])
+                {
+                    <option value="@venue.VenueId" selected="@(Context.Request.Query["venueId"] == venue.VenueId.ToString())">@venue.VenueName</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>From Date</label>
+            <input type="date" name="startDate" class="form-control" value="@Context.Request.Query["startDate"]" />
+        </div>
+        <div class="col-md-3">
+            <label>To Date</label>
+            <input type="date" name="endDate" class="form-control" value="@Context.Request.Query["endDate"]" />
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a asp-action="Index" class="btn btn-secondary">Clear</a>
+        </div>
+    </div>
+</form>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>

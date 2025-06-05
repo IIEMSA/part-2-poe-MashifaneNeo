@@ -16,10 +16,11 @@
         <span asp-validation-for="EventName" class="text-danger"></span>
     </div>
 
-    <!-- Event Date -->
+    <!-- Event Date (with time) -->
     <div class="form-group">
         <label asp-for="EventDate" class="control-label"></label>
-        <input asp-for="EventDate" type="datetime-local" class="form-control" required />
+        <input asp-for="EventDate" type="datetime-local" class="form-control"
+               value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" required />
         <span asp-validation-for="EventDate" class="text-danger"></span>
     </div>
 
@@ -37,6 +38,16 @@
             <option value="">-- Select Venue --</option>
         </select>
         <span asp-validation-for="VenueId" class="text-danger"></span>
+    </div>
+
+    <!-- Event Type Dropdown -->
+    <div class="form-group">
+        <label asp-for="EventTypeID" class="control-label">Event Type</label>
+        <select asp-for="EventTypeID" class="form-control"
+                asp-items="@(new SelectList(ViewData["EventTypes"] as IEnumerable<EventType> ?? new List<EventType>(), "EventTypeID", "Name"))">
+            <option value="">-- Select Type --</option>
+        </select>
+        <span asp-validation-for="EventTypeID" class="text-danger"></span>
     </div>
 
     <!-- Submit Button -->

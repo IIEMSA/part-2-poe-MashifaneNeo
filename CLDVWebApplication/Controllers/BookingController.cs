@@ -112,6 +112,21 @@ namespace CLDVWebApplication.Controllers
             return View(booking);
         }
 
+        // GET: Booking/Edit
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var booking = await _context.Bookings.FindAsync(id);
+            if (booking == null)
+                return NotFound();
+
+            ViewBag.EventId = new SelectList(_context.EventTables, "EventId", "EventName", booking.EventId);
+            ViewBag.VenueId = new SelectList(_context.Venues, "VenueId", "VenueName", booking.VenueId);
+            return View(booking);
+        }
+
         // POST: Booking/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]

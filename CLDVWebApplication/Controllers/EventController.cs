@@ -15,40 +15,68 @@ namespace CLDVWebApplication.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchType, int? venueId, DateTime? startDate, DateTime? endDate)
         {
-            var events = await _context.EventTables.Include(e => e.Venue).ToListAsync();
-            return View(events);
+            // Start with base query including related entities
+            var events = _context.EventTables
+                .Include(e => e.Venue)
+                .Include(e => e.EventType)  // Make sure you have this relationship
+                .AsQueryable();
+
+            // Apply filters if they are provided
+            if (!string.IsNullOrEmpty(searchType))
+            {
+                events = events.Where(e => e.EventType.Name == searchType);
+            }
+
+            if (venueId.HasValue)
+            {
+                events = events.Where(e => e.VenueId == venueId);
+            }
+
+            if (startDate.HasValue && endDate.HasValue)
+            {
+                events = events.Where(e => e.EventDate >= startDate && e.EventDate <= endDate);
+            }
+
+            // Provide data for dropdown filters in the View
+            ViewData["EventTypes"] = await _context.EventType.ToListAsync();
+            ViewData["Venues"] = await _context.Venues.ToListAsync();
+
+            // Execute the query and return the view
+            return View(await events.ToListAsync());
         }
 
         public IActionResult Create()
         {
+            // Ensure EventTypes and Venues are populated
+            ViewData["EventTypes"] = _context.EventType.ToList() ?? new List<EventType>();
             ViewData["VenueId"] = new SelectList(_context.Venues, "VenueId", "VenueName");
             return View();
         }
 
-        // POST: Event/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventName, EventDate, Description, VenueId")] EventTable eventTable)
+        public async Task<IActionResult> Create([Bind("EventName,EventDate,Description,VenueId,EventTypeID")] EventTable eventTable)
         {
-            if (ModelState.IsValid)  // Ensure form inputs are valid
+            if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.EventTables.Add(eventTable);
+                    _context.Add(eventTable);
                     await _context.SaveChangesAsync();
                     TempData["SuccessMessage"] = $"Event '{eventTable.EventName}' created successfully!";
-                    return RedirectToAction(nameof(Index));  // Redirect back to event list
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "An error occurred while saving the event. Please try again.");
-                    Console.WriteLine(ex.Message); // Log the error (for debugging)
+                    ModelState.AddModelError("", "An error occurred while saving the event.");
+                    Console.WriteLine(ex.Message);
                 }
             }
 
-            // If there are validation errors, return to the form
+            // Repopulate dropdowns if validation fails
+            ViewData["EventTypes"] = _context.EventType.ToList() ?? new List<EventType>();
             ViewData["VenueId"] = new SelectList(_context.Venues, "VenueId", "VenueName", eventTable.VenueId);
             return View(eventTable);
         }
@@ -60,13 +88,14 @@ namespace CLDVWebApplication.Controllers
             var eventTable = await _context.EventTables.FindAsync(id);
             if (eventTable == null) return NotFound();
 
+            ViewData["EventTypes"] = _context.EventType.ToList() ?? new List<EventType>();
             ViewData["VenueId"] = new SelectList(_context.Venues, "VenueId", "VenueName", eventTable.VenueId);
             return View(eventTable);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventId, EventName, EventDate, Description, VenueId")] EventTable eventTable)
+        public async Task<IActionResult> Edit(int id, [Bind("EventId,EventName,EventDate,Description,VenueId,EventTypeID")] EventTable eventTable)
         {
             if (id != eventTable.EventId) return NotFound();
 
@@ -91,6 +120,8 @@ namespace CLDVWebApplication.Controllers
                     }
                 }
             }
+
+            ViewData["EventTypes"] = _context.EventType.ToList() ?? new List<EventType>();
             ViewData["VenueId"] = new SelectList(_context.Venues, "VenueId", "VenueName", eventTable.VenueId);
             return View(eventTable);
         }

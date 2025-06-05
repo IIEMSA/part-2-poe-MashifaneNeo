@@ -21,7 +21,9 @@ public partial class EventEaseDbContext : DbContext
     public virtual DbSet<EventTable> EventTables { get; set; }
 
     public virtual DbSet<Venue> Venues { get; set; }
-   
+
+    public virtual DbSet<EventType> EventType { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

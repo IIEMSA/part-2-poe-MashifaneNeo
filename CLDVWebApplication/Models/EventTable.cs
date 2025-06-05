@@ -25,4 +25,8 @@ public class EventTable
 
     public Venue? Venue { get; set; } = null!;
 
+    public int? EventTypeID { get; set; }
+
+    public EventType? EventType { get; set; }
+
 }
