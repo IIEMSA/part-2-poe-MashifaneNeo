@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CLDVWebApplication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+757cf9059b0960acd39dbefbc532659596e53e50")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+652275c625387003d2e58c8b50276e5303debefd")]
 [assembly: System.Reflection.AssemblyProductAttribute("CLDVWebApplication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CLDVWebApplication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

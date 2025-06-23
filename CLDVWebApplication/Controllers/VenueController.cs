@@ -187,8 +187,8 @@ namespace CLDVWebApplication.Controllers
 
         private async Task<string> UploadImageToBlobAsync(IFormFile imageFile)
         {
-            var connectionString = "DefaultEndpointsProtocol=https;AccountName=websiteaccountn;AccountKey=Vhxs45b715jmpf8/C7ryD/WcA+bj+YCOCYnrRjqNxMKtIYx2tDRCkukLFJrRFqEL7i9ekeheIRL1+AStHdI1pA==;EndpointSuffix=core.windows.net";
-            var containerName = "cldv6211storage";
+            var connectionString = "DefaultEndpointsProtocol=https;AccountName=storagenmpoe;AccountKey=rI7RjH9xBIL+l8xT4GWt7hTLwMT0AVbTqdTSqlcG7pWo2TsOXwn7VJwcjztCsiLhM0ewG1R4xaGC+ASt5EvtDg==;EndpointSuffix=core.windows.net";
+            var containerName = "venuecontainer";
 
             var blobServiceClient = new BlobServiceClient(connectionString);
             var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
