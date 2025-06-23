@@ -22,6 +22,8 @@ EventEase simplifies the process of booking venues for events by allowing users 
 - View all current events and venues
 - Create new events and venues
 - Book a venue for a specific event
+- Search for specific bookings
+- Filter for specific events
 - Edit or cancel bookings
 
 The app ensures no double-bookings occur so that management of venues is seamless
